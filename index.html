@@ -110,7 +110,7 @@ Array.from(types).forEach(type => {
 function submitForm() {
   var type = el('input[name="type"]:checked').value;
 
-  gtag('event', 'search', {'event_label': website.value});
+  gtag('event', 'search', {'search_term': website.value, 'website_type': type});
 
   queryPSI(website.value, type, 'mobile');
   queryPSI(website.value, type, 'desktop');
@@ -152,6 +152,7 @@ function queryPSI(website, type, client) {
 }
 
 function setError(err) {
+  gtag('event', 'exception', {'description': err});
   console.error(err);
 }
 
