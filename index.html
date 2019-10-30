@@ -109,6 +109,9 @@ Array.from(types).forEach(type => {
 
 function submitForm() {
   var type = el('input[name="type"]:checked').value;
+
+  gtag('event', 'search', {'event_label': website.value});
+
   queryPSI(website.value, type, 'mobile');
   queryPSI(website.value, type, 'desktop');
 }
